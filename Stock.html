@@ -1,0 +1,1042 @@
+<html>
+    <style>
+      .header {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+      }
+
+      body {
+        font-family: Arial;
+      }
+
+      .receiptBtn {
+        text-align: right;
+      }
+
+      #receipt {
+        background: #3498db;
+        background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+        background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+        background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+        background-image: -o-linear-gradient(top, #3498db, #2980b9);
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        text-shadow: 1px 1px 3px #666666;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      #receipt:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+      }
+
+        .tab {
+          overflow: hidden;
+          border: 1px solid #000000;
+          background-color: #000000;
+        }
+
+        .tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          color: white;
+        }
+
+        .tab button:hover {
+          background-color: #ddd;
+        }
+
+        .tab button.active {
+          background-color: #ccc;
+        }
+
+        .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border: 1px solid #000000;
+          border-top: none;
+        }
+
+        .tabcontent {
+          animation: fadeEffect 1s;
+        }
+
+        @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+        .add_make {
+          background: #3498db;
+          background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+          background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+          background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+          background-image: -o-linear-gradient(top, #3498db, #2980b9);
+          background-image: linear-gradient(to bottom, #3498db, #2980b9);
+          -webkit-border-radius: 10;
+          -moz-border-radius: 10;
+          border-radius: 10px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 19px;
+          padding: 10px 10px 10px 10px;
+          text-decoration: none;
+        }
+
+        .add_make:hover {
+          background: #3cb0fd;
+          background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+          text-decoration: none;
+        }
+
+        .create_receipt {
+          background: #f01124;
+          background-image: -webkit-linear-gradient(top, #f01124, #850909);
+          background-image: -moz-linear-gradient(top, #f01124, #850909);
+          background-image: -ms-linear-gradient(top, #f01124, #850909);
+          background-image: -o-linear-gradient(top, #f01124, #850909);
+          background-image: linear-gradient(to bottom, #f01124, #850909);
+          -webkit-border-radius: 28;
+          -moz-border-radius: 28;
+          border-radius: 28px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 20px;
+          padding: 10px 20px 10px 20px;
+          text-decoration: none;
+        }
+
+        .create_receipt:hover {
+          background: #fa2828;
+          background-image: -webkit-linear-gradient(top, #fa2828, #ad2626);
+          background-image: -moz-linear-gradient(top, #fa2828, #ad2626);
+          background-image: -ms-linear-gradient(top, #fa2828, #ad2626);
+          background-image: -o-linear-gradient(top, #fa2828, #ad2626);
+          background-image: linear-gradient(to bottom, #fa2828, #ad2626);
+          text-decoration: none;
+        }
+
+        #simple_table {
+	        font-family: arial, sans-serif;
+	        border-collapse: collapse; 
+	        width: 100%;
+	        background-color: #ffffff;
+	        color:black;
+        }
+        #simple_table td, #simple_table th {
+	        text-align: left;
+	        padding: 8px;
+	        border: 1px solid #808080;
+        }
+        #simple_table tr:nth-child(even) {
+	        background-color: #dddddd;
+        }
+        #simple_table tr:hover {
+	        background-color: #ffff99;
+        }
+        #simple_table tr > th {
+	        background: #1b90bb;
+	        color: #ffffff;
+        }
+
+        #simple_table2 {
+	        font-family: arial, sans-serif;
+	        border-collapse: collapse; 
+	        width: 100%;
+	        background-color: #ffffff;
+	        color:black;
+        }
+        #simple_table2 td, #simple_table2 th {
+	        text-align: left;
+	        padding: 8px;
+	        border: 1px solid #808080;
+        }
+        #simple_table2 tr:nth-child(even) {
+	        background-color: #ffd6d6;
+        }
+        #simple_table2 tr:hover {
+	        background-color: #ffff99;
+        }
+        #simple_table2 tr > th 
+        {
+	        background: #ac1111;
+	        color: #ffffff;
+        }
+
+        .modal {
+                display: none; 
+                position: fixed; 
+                z-index: 1; 
+                padding-top: 100px; 
+                left: 0;
+                top: 0;
+                width: 100%; 
+                height: 100%; 
+                overflow: auto; 
+                background-color: rgb(0,0,0); 
+                background-color: rgba(0,0,0,0.4); 
+            }
+
+
+            .modal-content {
+                position: relative;
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0;
+                border: 1px solid #888;
+                width: 85%;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.4s;
+                animation-name: animatetop;
+                animation-duration: 0.4s
+            }
+
+            @-webkit-keyframes animatetop {
+                from {top:-300px; opacity:0} 
+                to {top:0; opacity:1}
+            }
+
+            @keyframes animatetop {
+                from {top:-300px; opacity:0}
+                to {top:0; opacity:1}
+            }
+
+            .close {
+                color: white;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover, .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .modal-header {
+                padding: 2px 16px;
+                text-align: center;
+                background-color: #808080;
+                color: white;   
+            }
+
+            .modal-body {
+                padding: 2px 16px;
+            }
+
+    </style>
+
+    <body>
+        <p><img class="header" src="Top Banner.jpg" alt="Top Banner"/></p>
+        <div class="receiptBtn">
+          <button id="receipt">Receipt</button>
+        </div>
+        <br>
+        <br>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Receipt </h2>
+              </div>
+              <div class="modal-body">
+                <br>
+                <br>
+                <table id='simple_table2' >
+                  <tr>
+                    <th>Date</th>
+                    <th>Vendor</th>
+                    <th>Invoice</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                  </tr>
+                  
+                  <tr>
+                    <td>row1 col 1</td>
+                    <td>row1 col 2</td>
+                    <td>row1 col 3</td>
+                    <td>row1 col 4</td>
+                    <td>row1 col 5</td>
+                    <td>row1 col 6</td>
+                  </tr>
+                  <tr>
+                    <td>row2 col 1</td>
+                    <td>row2 col 2</td>
+                    <td>row2 col 3</td>
+                    <td>row2 col 4</td>
+                    <td>row2 col 5</td>
+                    <td>row2 col 6</td>
+                  </tr>
+                  <tr>
+                    <td>row3 col 1</td>
+                    <td>row3 col 2</td>
+                    <td>row3 col 3</td>
+                    <td>row3 col 4</td>
+                    <td>row3 col 5</td>
+                    <td>row3 col 6</td>
+                  </tr>
+                </table>
+                <br>
+                <br>
+              </div>
+          </div>
+      </div>
+
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Schneider')">Schneider</button>
+            <button class="tablinks" onclick="openTab(event, 'L&T')">L & T</button>
+            <button class="tablinks" onclick="openTab(event, 'Havells')">Havells</button>
+            <button class="tablinks" onclick="openTab(event, 'Legrand')">Legrand</button>
+            <button class="tablinks" onclick="openTab(event, 'Essma')">Essma</button>
+            <button class="tablinks" onclick="openTab(event, 'Others')">Others</button>
+            <button class="tablinks" onclick="openTab(event, 'QuotationDb')">Quotation DB</button>
+            <button class="tablinks" onclick="openTab(event, 'Loose Goods')">Loose Goods</button>
+          </div>
+          
+          <div id="Schneider" class="tabcontent">
+            <h3>Stock for Schneider</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Description of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+              </tr>
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row3 col 18</td>
+              </tr>
+              </table>
+              <br>
+              <br>
+              <button class="add_make"> Add Item </button>
+          </div>
+          
+          <div id="L&T" class="tabcontent">
+            <h3>Stock for L & T</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Description of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+              </tr>
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row3 col 18</td>
+              </tr>
+              </table>
+            <br>
+            <br>
+            <button class="add_make"> Add Item </button>
+          </div>
+          
+          <div id="Havells" class="tabcontent">
+            <h3>Stock for Havells</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Description of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+              </tr>
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row3 col 18</td>
+              </tr>
+              </table>
+              <br>
+              <br>
+              <button class="add_make"> Add Item </button>
+          </div>
+
+          <div id="Legrand" class="tabcontent">
+            <h3>Stock for Legrand</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Description of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+              </tr>
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row3 col 18</td>
+              </tr>
+              </table>
+              <br>
+              <br>
+              <button class="add_make"> Add Item </button>
+          </div>
+
+          <div id="Essma" class="tabcontent">
+            <h3>Stock for Essma</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Description of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+              </tr>
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row3 col 18</td>
+              </tr>
+              </table>
+              <br>
+              <br>
+              <button class="add_make"> Add Item </button>
+          </div>
+
+          <div id="Others" class="tabcontent">
+            <h3>Stock for Others</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>SL No.</th>
+                <th>Item</th>
+                <th>Make</th>
+                <th>Description Of Goods</th>
+                <th>Pole</th>
+                <th>Release</th>
+                <th>KA</th>
+                <th>Reference Number</th>
+                <th>Draw Out</th>
+                <th>Opening Quantity</th>
+                <th>Received</th>
+                <th>Issued</th>
+                <th>Closing Balance</th>
+                <th>Total Requirement</th>
+                <th>Rate</th>
+                <th>Discount</th>
+                <th>Net</th>
+                <th>Effective Rate</th>
+                <th>Amount</th>
+              </tr>
+              
+              <tr>
+                <td>row1 col 1</td>
+                <td>row1 col 2</td>
+                <td>row1 col 3</td>
+                <td>row1 col 4</td>
+                <td>row1 col 5</td>
+                <td>row1 col 6</td>
+                <td>row1 col 7</td>
+                <td>row1 col 8</td>
+                <td>row1 col 9</td>
+                <td>row1 col 10</td>
+                <td>row1 col 11</td>
+                <td>row1 col 12</td>
+                <td>row1 col 13</td>
+                <td>row1 col 14</td>
+                <td>row1 col 15</td>
+                <td>row1 col 16</td>
+                <td>row1 col 17</td>
+                <td>row1 col 18</td>
+                <td>row1 col 19</td>
+              </tr>
+             
+              <tr>
+                <td>row2 col 1</td>
+                <td>row2 col 2</td>
+                <td>row2 col 3</td>
+                <td>row2 col 4</td>
+                <td>row2 col 5</td>
+                <td>row2 col 6</td>
+                <td>row2 col 7</td>
+                <td>row2 col 8</td>
+                <td>row2 col 9</td>
+                <td>row2 col 10</td>
+                <td>row2 col 11</td>
+                <td>row2 col 12</td>
+                <td>row2 col 13</td>
+                <td>row2 col 14</td>
+                <td>row2 col 15</td>
+                <td>row2 col 16</td>
+                <td>row2 col 17</td>
+                <td>row2 col 18</td>
+                <td>row2 col 19</td>
+              </tr>
+              <tr>
+                <td>row3 col 1</td>
+                <td>row3 col 2</td>
+                <td>row3 col 3</td>
+                <td>row3 col 4</td>
+                <td>row3 col 5</td>
+                <td>row3 col 6</td>
+                <td>row3 col 7</td>
+                <td>row3 col 8</td>
+                <td>row3 col 9</td>
+                <td>row3 col 10</td>
+                <td>row3 col 11</td>
+                <td>row3 col 12</td>
+                <td>row3 col 13</td>
+                <td>row3 col 14</td>
+                <td>row3 col 15</td>
+                <td>row3 col 16</td>
+                <td>row3 col 17</td>
+                <td>row1 col 18</td>
+                <td>row1 col 19</td>
+              </tr>
+              </table>
+              <br>
+              <br>
+              <button class="add_make"> Add Item </button>
+          </div>
+
+          <div id="QuotationDb" class="tabcontent">
+            <h3>Quotation DB</h3>
+            <table id='simple_table' >
+              <tr>
+                <th>	ID	</th>
+                <th>	EQUIPMENT	</th>
+                <th>	CATEGORY	</th>
+                <th>	RELEASE/TYPE	</th>
+                <th>	POLES	</th>
+                <th>	RATING	</th>
+                <th>	BC	</th>
+                <th>	SCHNEIDER MRP	</th>
+                <th>	SCHNEIDER DISCOUNT	</th>
+                <th>	SCHNEIDER UNIT RATE	</th>
+                <th>	LEGRAND MRP	</th>
+                <th>	LEGRAND DISCOUNT	</th>
+                <th>	LEGRAND UNIT RATE	</th>
+                <th>	L&T MRP	</th>
+                <th>	L&T DISCOUNT	</th>
+                <th>	L&T UNIT RATE	</th>
+                <th>	HAVELLS MRP	</th>
+                <th>	HAVELLS DISCOUNT	</th>
+                <th>	HAVELLS UNIT RATE	</th>
+                <th>	C&S MRP	</th>
+                <th>	C&S DISCOUNT	</th>
+                <th>	C&S UNIT RATE	</th>
+                <th>	ALUMINUM I&C	</th>
+                <th>	COPPER I&C	</th>
+              </tr>
+              
+              <tr>
+                <td>1</td>
+                <td>ACB</td>
+                <td>MDO</td>
+                <td>TM</td>
+                <td>3 POLE</td>
+                <td>630 A</td>
+                <td>50 kA</td>
+                <td>170710.00</td>
+                <td>69</td>
+                <td>52920.1</td>
+                <td>59740.76</td>
+                <td>0</td>
+                <td>59740.76</td>
+                <td>132030.00</td>
+                <td>57</td>
+                <td>56772.9</td>
+                <td>85285.00</td>
+                <td>47</td>
+                <td>45201.05</td>
+                <td>100570.00</td>
+                <td>55</td>
+                <td>45256.5</td>
+                <td>3612.00</td>
+                <td>12472.00</td>
+              </tr>
+             
+              <tr>
+                <td>2</td>
+                <td>ACB</td>
+                <td>MDO</td>
+                <td>TM</td>
+                <td>3 POLE</td>
+                <td>800 A</td>
+                <td>50 kA</td>
+                <td>170710.00</td>
+                <td>69</td>
+                <td>52920.1</td>
+                <td>59740.76</td>
+                <td>0</td>
+                <td>59740.76</td>
+                <td>132030.00</td>
+                <td>57</td>
+                <td>56772.9</td>
+                <td>88135.00</td>
+                <td>47</td>
+                <td>46711.55</td>
+                <td>107380.00</td>
+                <td>55</td>
+                <td>48321</td>
+                <td>3612.00</td>
+                <td>12472.00</td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>ACB</td>
+                <td>MDO</td>
+                <td>TM</td>
+                <td>3 POLE</td>
+                <td>1000 A</td>
+                <td>50 kA</td>
+                <td>180310.00</td>
+                <td>69</td>
+                <td>55896.1</td>
+                <td>62207.24</td>
+                <td>0</td>
+                <td>62207.24</td>
+                <td>138990.00</td>
+                <td>57</td>
+                <td>59765.7</td>
+                <td>96285.00</td>
+                <td>47</td>
+                <td>51031.05</td>
+                <td>109950.00</td>
+                <td>55</td>
+                <td>49477.5</td>
+                <td>6941.00</td>
+                <td>21029.00</td>
+              </tr>
+              </table>
+          </div>
+
+          <div id="Loose Goods" class="tabcontent">
+            <h3>Loose Goods</h3>
+            <table id='simple_table2' >
+
+              <tr>
+                <th> Date (Sorted by month) </th>
+                <th> Receipt No. </th>
+              </tr>
+
+              <tr>
+                <td>10/17</td>
+                <td>XXXX</td>
+              </tr>
+
+              <tr>
+                <td>10/17</td>
+                <td>XXXX</td>
+              </tr>
+
+            </table>
+            <br>
+            <br>
+            <button class="create_receipt"> Create Receipt </button>
+          </div>
+    </body>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        var modal = document.getElementById("myModal");
+            
+            var btn = document.getElementById("receipt");
+            
+            var span = document.getElementsByClassName("close")[0];
+            
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+    </script>
+</html>
